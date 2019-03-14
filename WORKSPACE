@@ -1,17 +1,17 @@
 workspace(name = "basic_scala")
 
-rules_scala_version="326b4ce252c36aeff2232e241ff4bfd8d6f6e071" # update this as needed
-http_archive(
-             name = "io_bazel_rules_scala",
-             url = "https://github.com/bazelbuild/rules_scala/archive/%s.zip"%rules_scala_version,
-             type = "zip",
-             strip_prefix= "rules_scala-%s" % rules_scala_version
-             )
+#rules_scala_version="326b4ce252c36aeff2232e241ff4bfd8d6f6e071" # update this as needed
+#http_archive(
+#             name = "io_bazel_rules_scala",
+#             url = "https://github.com/bazelbuild/rules_scala/archive/%s.zip"%rules_scala_version,
+#             type = "zip",
+#             strip_prefix= "rules_scala-%s" % rules_scala_version
+#             )
 
-#local_repository(
-#    name = "io_bazel_rules_scala",
-#    path = "/Users/shain/code/rules_scala"
-#)
+local_repository(
+    name = "io_bazel_rules_scala",
+    path = "/Users/shain/code/rules_scala"
+)
 
 load("@io_bazel_rules_scala//scala:scala.bzl", "scala_repositories")
 scala_repositories()
@@ -22,6 +22,13 @@ scala_register_toolchains()
 
 load("@io_bazel_rules_scala//scala:scala_maven_import_external.bzl", "scala_maven_import_external")
 
+#
+# local second party code repository
+#
+local_repository(
+    name = "second_party_example",
+    path = "/Users/shain/code/bazel_scala_2nd_party"
+)
 
 scala_maven_import_external(
     name = "com_typesafe_akka_akka_http_2_12",

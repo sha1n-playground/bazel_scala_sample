@@ -8,7 +8,9 @@ scala_library(
         ],
     visibility = ["//visibility:public"],
     deps = [
+        "@second_party_example//src/scala/com/second/party/example/scala:2nd_party_example",
         "@com_typesafe_akka_akka_http_core_2_12//jar",
-        "@com_typesafe_akka_akka_parsing_2_12//jar"
+        "@com_typesafe_akka_akka_parsing_2_12//jar",
+        "//packaaaa/src/scala/infra",
     ]
 )
